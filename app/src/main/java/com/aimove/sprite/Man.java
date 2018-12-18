@@ -11,14 +11,8 @@ public class Man extends Sprite {
         super(defaultBitmap, position);
     }
 
-    /*public Face createFace(Context context, Point touchPoint, int drawableId) {
-        Bitmap faceBitmap = BitmapFactory.decodeResource(context.getResources(), drawableId);
-        Face face = new Face(faceBitmap, new Point(position.x + defaultBitmap.getWidth()/2 - faceBitmap.getWidth() / 2, position.y + defaultBitmap.getHeight()/2 - faceBitmap.getHeight() / 2), touchPoint);
-        return face;
-    }*/
-
-    public Eyes createEyes(Bitmap eyeBBitmap, Point posLeft, Point posRight) {
-        Eyes eyes = new Eyes(eyeBBitmap, posLeft, posRight);
+    public Eyes createEyes(Bitmap eyeWBitmap, Bitmap eyeBBitmap, Point posLeft, Point posRight) {
+        Eyes eyes = new Eyes(eyeWBitmap, eyeBBitmap, posLeft, posRight);
         return eyes;
     }
 
