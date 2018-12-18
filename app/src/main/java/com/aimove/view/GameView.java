@@ -31,12 +31,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private int screenWidth;
     private int screenHeight;
     private final String TAG = "GameView";
-    private final float ratio = 0.2f;
+    private final float ratio = 0.4f;
     private final int manPicWidth = 929;
     private final int manPicHeight = 1944;
     private final int eyeWLeftCenterX = 355;
     private final int eyeWLeftCenterY = 521;
-    private final int eyeWRightCenterX = 565;
+    private final int eyeWRightCenterX = 570;
     private final int eyeWRightCenterY = 509;
 
     private int bodyX;
@@ -163,7 +163,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         eyes.drawSelf(canvas);
         mMan.drawSelf(canvas);
 
-        /*paint.setColor(Color.BLACK);
+        paint.setColor(Color.GRAY);
         int xLeft = eyeWLeftCenterX - eyeWWidth / 2;
         int yLeft = eyeWLeftCenterY - eyeWHeight / 2;
         xLeft = convert(xLeft);
@@ -174,7 +174,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         int yRight = eyeWRightCenterY - eyeWHeight / 2;
         xRight = convert(xRight);
         yRight = convert(yRight);
-        canvas.drawRect(bodyX + xRight, bodyY + yRight, bodyX + xRight + convert(eyeWWidth), bodyY + yRight + convert(eyeWHeight), paint);*/
+        canvas.drawRect(bodyX + xRight, bodyY + yRight, bodyX + xRight + convert(eyeWWidth), bodyY + yRight + convert(eyeWHeight), paint);
 
         mHolder.unlockCanvasAndPost(canvas);
     }
