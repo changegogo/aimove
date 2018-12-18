@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
@@ -31,7 +32,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private int screenWidth;
     private int screenHeight;
     private final String TAG = "GameView";
-    private final float ratio = 0.4f;
+    private final float ratio = 2.f;
     private final int manPicWidth = 929;
     private final int manPicHeight = 1944;
     private final int eyeWLeftCenterX = 355;
@@ -56,6 +57,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         mHolder = getHolder();
         mHolder.addCallback(this);
         mPool = Executors.newFixedThreadPool(5);
+        setZOrderOnTop(true);
+        mHolder.setFormat(PixelFormat.TRANSLUCENT);
     }
 
     public GameView(Context context, AttributeSet attrs) {
@@ -152,18 +155,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void drawUI() {
         // 锁定界面
         Canvas canvas = mHolder.lockCanvas();
-        Paint paint = new Paint();
+        if(canvas ==null)
+            return;
+        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        //Paint paint = new Paint();
         //paint.setColor(Color.WHITE);
         //paint.setAlpha(255);
-
         // 画矩形
         //drawRect(0, 0, getWidth(), getHeight(), paint);
-        canvas.drawColor(Color.alpha(100), PorterDuff.Mode.CLEAR);
+        //canvas.drawColor(Color.alpha(255), PorterDuff.Mode.CLEAR);
 
         eyes.drawSelf(canvas);
         mMan.drawSelf(canvas);
 
-        paint.setColor(Color.GRAY);
+        /*paint.setColor(Color.GRAY);
         int xLeft = eyeWLeftCenterX - eyeWWidth / 2;
         int yLeft = eyeWLeftCenterY - eyeWHeight / 2;
         xLeft = convert(xLeft);
@@ -174,7 +179,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         int yRight = eyeWRightCenterY - eyeWHeight / 2;
         xRight = convert(xRight);
         yRight = convert(yRight);
-        canvas.drawRect(bodyX + xRight, bodyY + yRight, bodyX + xRight + convert(eyeWWidth), bodyY + yRight + convert(eyeWHeight), paint);
+        canvas.drawRect(bodyX + xRight, bodyY + yRight, bodyX + xRight + convert(eyeWWidth), bodyY + yRight + convert(eyeWHeight), paint);*/
 
         mHolder.unlockCanvasAndPost(canvas);
     }
