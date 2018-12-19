@@ -33,7 +33,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private int screenHeight;
     private final String TAG = "GameView";
     private final float ratio = 2.f;
-    private final int manPicWidth = 929;
+    private final int manPicWidth = 930;
     private final int manPicHeight = 1944;
     private final int eyeWLeftCenterX = 355;
     private final int eyeWLeftCenterY = 521;
@@ -72,7 +72,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         // create man
-        Bitmap manBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body);
+        Bitmap manBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.body2);
         Bitmap scaleManBitmap = scaleBitmap(manBitmap, ratio);
         screenWidth = getWidth();
         screenHeight = getHeight();
